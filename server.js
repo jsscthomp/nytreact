@@ -2,9 +2,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const routes = require("./routes");
+// const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // config body parser for ajax requests
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // serve up static assets
 app.use(express.static("client/build"));
 // add routes
-app.use(routes);
+// app.use(routes);
 
 // set up mongoose promises
 mongoose.Promise = global.Promise;
@@ -26,5 +26,5 @@ mongoose.connect(
 
 // start api server 
 app.listen(PORT, function() {
-    console.log("API server listening on PORT:" ${PORT});
+    console.log("API server listening on PORT:" + PORT);
 });
