@@ -22,26 +22,42 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     	<!-- Specified CSS -->
-	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" href="./index.css">
   
   
     <title>React App</title>
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div class="jumbotron">
+      <header>
+        <div id="inner-header">
+          <h1>New York Times Article Scrubber</h1>
+          <h3>Search for and annotate articles of interest!</h3>
+        </div>
+      </header>
+    </div>
+    <!-- end of jumbotron wrapper -->
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <div id="search-container">
+      <h2>Search</h2>
+      <div id="topic-search"></div>
+      <div id="start-year-search"></div>
+      <div id="end-year-search"></div>
+      <button type="button" class="btn btn-secondary">Submit</button>
+    </div>
+    <!-- end of search container -->
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="results-container">
+      <h2>Results</h2>
+      <!-- empty div to append results to -->
+      <div id="results"></div>
+    </div>
+
+    <div id="saved-container">
+      <h2>Saved Articles</h2>
+      <!-- empty div to hold saved articles -->
+      <div id="saved"></div>
+    </div>
 
 
 <!-- JS, JQuery, AJAX -->
