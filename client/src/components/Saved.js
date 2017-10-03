@@ -62,7 +62,26 @@ export class Main extends React.Component {
         }
 
         return(
+
+            <div className="main-container">
+                <div className="row">
+                    <div className="col-lg-12">
+
+                        <div className="panel panel-primary">
+                            <div className="panel-heading">
+                                <h1 className="panel-title"><i className="fa fa-download"></i>Saved Articles</h1>
+                            </div>
+                            <div className="panel-body">
+                                <ul className="list-group">
+                                    {articles}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
             
         )
     }
-}
+};
