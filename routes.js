@@ -6,7 +6,7 @@ import Main from '../client/src/components/Main';
 import Search from '../client/src/components/Search';
 import Saved from '../client/src/components/Saved';
 
-module exports = (
+module.exports = (
 
     <Route path='/' component={Main}>
 
