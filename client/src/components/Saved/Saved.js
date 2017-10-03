@@ -58,7 +58,11 @@ export class Main extends React.Component {
                         </li>
                     </div>
                 )
-            })
+            }.bind(this))
         }
+
+        return(
+            
+        )
     }
 }
