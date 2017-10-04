@@ -1,25 +1,25 @@
 const React = require('react');
 const Router = require('react-router');
-const API = require('../utils/API');
+const API = require('./src/utils/API');
 
-export class Main extends React.Component {
+export class Saved extends React.Component {
 
-    initialState: function() {
+    initialState = () => {
         return {
             savedArticles: ""
         }
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount = () => {
         API.getSaved()
             .then(function(articleData) {
                 this.setState({
                     savedArticles: articleData.data
                 });
             }.bind(this))
-    },
+    }
 
-    handleClick: function(item, event) {
+    handleClick = (item, event) => {
         API.deleteSaved(item.title, item.date, item.url) 
             .then(function(data) {
             
@@ -30,7 +30,7 @@ export class Main extends React.Component {
                     });
                 }.bind(this))
             }.bind(this))
-    },
+    }
 
     render() {
         if (!this.state.savedArticles === "") {

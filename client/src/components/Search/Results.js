@@ -1,20 +1,20 @@
 const React = require('react');
 const Router = require('react-router');
-const API = require('../utils/API');
+const API = require('./src/utils/API');
 
 export class Results extends React.Component {
 
-    initialState: function() {
+    initialState =  () => {
         return {
             title: "",
             url: "",
             date: "",
         }
-    },
+    }
 
-    handleClick: function(item, event) {
+    handleClick = (item, event) => {
         API.postSaved(item.headline.main, item.pub_date, item.web_url).then(function(data){}.bind(this))
-    },
+    }
 
     render() {
         if (!this.props.results.hasOwnProperty('docs')) {
