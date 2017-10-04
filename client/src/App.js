@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import Router from 'react-router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import routes from '../routes';
-import Main from '../client/src/components/Main';
-import Search from '../client/src/components/Search';
-import Saved from '../client/src/components/Saved';
+import Main from './components/Main.js';
+import Search from './components/Search.js';
+import Saved from '.components/Saved.js';
 
 const App = () => (
   <Router>
