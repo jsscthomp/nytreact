@@ -18,7 +18,7 @@ app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(express.static("client/build"));
 
 // Link to database
-var dbLink = '';
+var dbLink = 'mongodb://heroku_96qnl2z0:mpmhcg0780b8c540r099uj411l@ds161304.mlab.com:61304/heroku_96qnl2z0';
 
 // set up mongoose promises
 mongoose.Promise = global.Promise;
