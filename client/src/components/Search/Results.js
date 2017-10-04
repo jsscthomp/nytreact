@@ -1,6 +1,6 @@
 const React = require('react');
 const Router = require('react-router');
-const API = require('./src/utils/API');
+const API = require('../utils/API');
 
 export class Results extends React.Component {
 
