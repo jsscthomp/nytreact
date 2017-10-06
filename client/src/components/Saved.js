@@ -2,7 +2,7 @@ const React = require('react');
 const Router = require('react-router');
 const API = require('../utils/API');
 
-export class Saved extends React.Component {
+export default class Saved extends React.Component {
 
     initialState = () => {
         return {

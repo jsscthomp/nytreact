@@ -4,7 +4,7 @@ const API = require('../utils/API');
 const Query = require('./Search/Query');
 const Results = require('./Search/Results');
 
-export class Search extends React.Component {
+export default class Search extends React.Component {
 
     initialState = {
             queryTerm: "",
