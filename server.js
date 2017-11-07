@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 // const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 6000;
 
 var Article = require('./models/Article.js');
 
@@ -41,7 +41,7 @@ db.once('open', function () {
 });
 
 app.get('/', function(req, res) {
-    res.sendFile('./public/index.html');
+    res.sendFile(path.join, '/client/public/index.html');
 });
 
 app.get('/api/saved', function(req, res) {

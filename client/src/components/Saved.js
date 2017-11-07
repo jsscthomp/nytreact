@@ -1,16 +1,17 @@
 const React = require('react');
-const Router = require('react-router');
+// const Router = require('react-router');
 const API = require('../utils/API');
 
 export default class Saved extends React.Component {
 
-    initialState = () => {
-        return {
+    constructor() {
+        super();
+        this.state =  {
             savedArticles: ""
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         API.getSaved()
             .then(function(articleData) {
                 this.setState({
@@ -19,7 +20,7 @@ export default class Saved extends React.Component {
             }.bind(this))
     }
 
-    handleClick = (item, event) => {
+    handleClick(item, event) {
         API.deleteSaved(item.title, item.date, item.url) 
             .then(function(data) {
             

@@ -2,21 +2,22 @@ const React = require('react');
 
 export class Query extends React.Component {
 
-    initialState = () => {
-        return {
+    constructor() {
+        super();
+        this.state = {
             search: "",
             start: "",
             end: "",
         }
     }
 
-    handleChange = (event) => {
+    handleChange(event) {
         var newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState);
     }
 
-    handleSubmit = () => {
+    handleSubmit() {
         this.props.updateSearch(this.state.search, this.state.start, this.state.end);
         return false;
     }

@@ -6,14 +6,17 @@ const Results = require('./Search/Results');
 
 export default class Search extends React.Component {
 
-    initialState = {
+    constructor() {
+        super();
+        this.state = {
             queryTerm: "",
             startYear: "",
             endYear: "",
             results: {}
+        }
     }
 
-    componentDidUpdate =  (prevProps, prevState) => {
+    componentDidUpdate(prevProps, prevState) {
 
         if (this.state.queryTerm != "" && (prevState.queryTerm != this.state.queryTerm || prevState.startYear != this.state.startYear || prevState.endYear != this.state.endYear)) {
             API.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear)
@@ -27,7 +30,7 @@ export default class Search extends React.Component {
         }
     }
 
-    setQuery = (newQuery, newStart, newEnd) => {
+    setQuery(newQuery, newStart, newEnd) {
         this.setState({
             queryTerm: newQuery,
             startYear: newStart,
