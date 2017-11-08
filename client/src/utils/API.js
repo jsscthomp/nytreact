@@ -1,57 +1,71 @@
+// include axios library for HTTP requests
 import axios from "axios";
-import React from 'react';
+
+// api key for new york times
 const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 const APIKEY = "&apikey=e92e49d7263d4506ac6e8571b2fdc0dc";
 
-export default {
-    // set up call to get articles from API
-    runQuery(term, start, end) {
+// helper function
+const API = {
+    // this will run query
+    runQuery: function(term, start, end) {
+        // adjust search terms to proper format
+        var formattedTerm = term.trim();
+        var formattedStart = start.trim() + "1010";
+        var formattedEnd = end.trim() + "1234";
 
-        var term = term.trim();
-        var start = start.trim();
-        var end = end.trim();
+        console.log("Query Run");
 
+        // run query with axios and return to results as an object with an array
         return axios.get(BASEURL, {
             params: {
                 'api-key': APIKEY,
-                'query': term,
-                'start_date': start,
-                'end_date': end
+                'query': formattedTerm,
+                'start_date': formattedStart,
+                'end_date': formattedEnd
             }
-        }).then(function(results) {
+        })
+        .then(function(results) {
+            console.log("Axios Results", results.data.response);
             return results.data.response;
         });
     },
 
     // get saved articles from db
-    getSave() {
+    getSave: function() {
         return axios.get('/api/saved')
             .then(function(results) {
+                console.log("axios results", results);
                 return results;
-            })
+        });
     },
 
     // post saved articles to db
-    postSaved(title, date, url) {
+    postSaved: function(title, date, url) {
         var newArticle = {title: title, date: date, url: url};
+        console.log('post saved', title);
         return axios.post('/api/saved', newArticle)
-            .then(function(results) {
-                return results._id;
-            })
+            .then(function(response) {
+                console.log("axios results", response.data._id);
+                return response.data._id;
+            });
     },
 
     // delete article from db
-    deleteSaved(title, date, url) {
+    deleteSaved: function(title, date, url) {
         return axios.delete('/api/saved', {
             params: {
                 'title': title,
                 'date': date,
                 'url': url
             }
-        }).then(function(results) {
+        })
+        .then(function(results) {
+            console.log("axios results", results)
             return results;
         })
-
     },
-
 };
+
+// export API function
+export default API;
