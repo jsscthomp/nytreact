@@ -74,7 +74,7 @@ app.post('/api/saved', function(req, res) {
 app.delete('/api/saved', function(req, res) {
     var url = req.param('url');
 
-    Article.find({'url': url}). remove().exec(function(err, data) {
+    Article.find({'url': url}).remove().exec(function(err, data) {
         if(err) {
             console.log(err);
         } else {
