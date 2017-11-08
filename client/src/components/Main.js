@@ -1,5 +1,5 @@
 const React = require('react');
-const Router = require('react-router');
+// const Router = require('react-router');
 
 export default class Main extends React.Component {
     render() {

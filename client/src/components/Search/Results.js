@@ -1,18 +1,19 @@
 const React = require('react');
-const Router = require('react-router');
+// const Router = require('react-router');
 const API = require('../../utils/API');
 
 export class Results extends React.Component {
 
-    initialState =  () => {
-        return {
+    constructor() {
+        super();
+        this.state = {
             title: "",
             url: "",
             date: "",
         }
     }
 
-    handleClick = (item, event) => {
+    handleClick(item, event) {
         API.postSaved(item.headline.main, item.pub_date, item.web_url).then(function(data){}.bind(this))
     }
 

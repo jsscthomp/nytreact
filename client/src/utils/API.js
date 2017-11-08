@@ -3,9 +3,9 @@ import React from 'react';
 const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 const APIKEY = "&apikey=e92e49d7263d4506ac6e8571b2fdc0dc";
 
-export class API extends React.Component {
+export default {
     // set up call to get articles from API
-    runQuery = (term, start, end) => {
+    runQuery(term, start, end) {
 
         var term = term.trim();
         var start = start.trim();
@@ -21,27 +21,27 @@ export class API extends React.Component {
         }).then(function(results) {
             return results.data.response;
         });
-    }
+    },
 
     // get saved articles from db
-    getSaved = () => {
+    getSave() {
         return axios.get('/api/saved')
             .then(function(results) {
                 return results;
             })
-    }
+    },
 
     // post saved articles to db
-    postSaved = (title, date, url) => {
+    postSaved(title, date, url) {
         var newArticle = {title: title, date: date, url: url};
         return axios.post('/api/saved', newArticle)
             .then(function(results) {
                 return results._id;
             })
-    }
+    },
 
     // delete article from db
-    deleteSaved = (title, date, url) => {
+    deleteSaved(title, date, url) {
         return axios.delete('/api/saved', {
             params: {
                 'title': title,
@@ -52,6 +52,6 @@ export class API extends React.Component {
             return results;
         })
 
-    }
+    },
 
 };
