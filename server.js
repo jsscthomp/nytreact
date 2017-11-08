@@ -1,8 +1,9 @@
-// setting dependencies
+// setting server dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-// const routes = require("./routes");
+
+// instance of express
 const app = express();
 const PORT = process.env.PORT || 6000;
 
@@ -14,8 +15,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 
-// serve up static assets
+// enable CORS so that requests are not blocked
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    next();
+});
+// serve up static assets created by create-react-app
 app.use(express.static("client/build"));
+
+// ==========================================================================
 
 // Link to database
 var dbLink = 'mongodb://heroku_96qnl2z0:mpmhcg0780b8c540r099uj411l@ds161304.mlab.com:61304/heroku_96qnl2z0';
@@ -40,6 +50,8 @@ db.once('open', function () {
     console.log("Mongoose connection successful!");
 });
 
+// ===================================================================
+// Route to get all saved articles
 app.get('/', function(req, res) {
     res.sendFile(path.join, '/client/public/index.html');
 });
@@ -52,35 +64,40 @@ app.get('/api/saved', function(req, res) {
             } else {
                 res.send(doc);
             }
-        })
+        });
 });
 
+// route to add an article to saved list
 app.post('/api/saved', function(req, res) {
     var newArticle = new Article(req.body);
-
-    var title = req.body.title;
-    var date = req.body.date;
-    var url = req.body.url;
-
+    console.log(req.body);
     newArticle.save(function(err, doc) {
         if(err) {
             console.log(err) 
         } else {
-                res.send(doc._id);
+            res.send(doc);
         }
     });
 });
 
-app.delete('/api/saved', function(req, res) {
+// route to delet an article from saved list
+app.delete('/api/saved/', function(req, res) {
     var url = req.param('url');
-
-    Article.find({'url': url}).remove().exec(function(err, data) {
+    Article.find({ url: url }).remove().exec(function(err, data) {
         if(err) {
             console.log(err);
         } else {
             res.send("Deleted");
         }
     });
+});
+
+app.get("*", function(req, res) {
+    if ( process.env.NODE_ENV === 'production') {
+        res.sendFile(__dirname +  "/client/build/index.html" );
+    } else {
+        res.sendFile(__dirname + "/client/public/index.html" );
+    }
 });
 
 // start api server 
