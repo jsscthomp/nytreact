@@ -1,26 +1,27 @@
+// include react dependency
 import React from 'react';
-// import ReactDom from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import routes from '../routes';
+// include react router module
+import { BrowserRouter as Switch, Router, Route, IndexRoute, browserHistory } from 'react-router-dom';
+// reference high-level components
 import Main from './components/Main.js';
 import Search from './components/Search.js';
 import Saved from './components/Saved.js';
 
-const App = () => (
-  <Router>
-    <div>
-      <Main />
-      <Saved />
-      <Search />
+// export routes
+export default (
+  // highest level component
+  <Router history={browserHistory}>
+        <Route exact path='/' component={Main}>
 
-      <Switch>
-        <Route exact path='/' component={Main} />
-        <Route exact path='Search' component={Search} />
-        <Route exact path='Saved' component={Saved} />
-      </Switch>
-
-    </div>
+    {/* if user selects search or saved show appropriate component */}
+        <Switch>
+          <Route exact path='Search' component={Search} />
+          <Route exact path='Saved' component={Saved} />
+        </Switch>
+    {/* if user selects any other path */}
+        <IndexRoute component={Search} />
+      </Route>
   </Router>
 );
 
-export default App;
+
