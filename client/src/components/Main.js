@@ -1,17 +1,17 @@
 // include react dependency
 import React, { Component } from 'react';
 // add react route
-import {Link} from 'react-router';
+import { Link } from 'react-router-dom';
 
 // create main component
-export default class Main extends React.Component {
+export default class Main extends Component {
     render() {
         return(
             // main container div
             <div className="main-container">
                 <div className="container">
                     {/* navbar */}
-                    <nav className="navbar navbar-default" role="navigation">
+                    <nav className="navbar navbar-default">
                         <div className="container-fluid">
                             <div className="navbar-header">
                                 <button 

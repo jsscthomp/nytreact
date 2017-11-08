@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // query component declaration
-export class Query extends React.Component {
+export class Query extends Component {
 // set initial variables
     constructor() {
         super();
