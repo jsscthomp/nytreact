@@ -12,14 +12,14 @@ export default class Query extends Component {
         }
 
     // handle changes from textbox
-    handleChange(event) {
+    handleChange = (event) => {
         var newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState);
     }
 
     // handle what happens to the search terms. sends to parent search
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
         this.props.updateSearch(this.state.search, this.state.start, this.state.end);
     }
@@ -46,7 +46,7 @@ export default class Query extends Component {
                                         <h3 className="topic"><strong>Topic</strong></h3>
                                         <input 
                                             type="text" 
-                                            value={this.state.value} 
+                                            value={this.state.search} 
                                             className="form-control" 
                                             id="search" 
                                             onChange= {this.handleChange} 
