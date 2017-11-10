@@ -11,27 +11,26 @@ const Results = require('./Search/Results');
 // create search component
 export default class Search extends Component {
     // set initial state of variables
-    constructor() {
-        super();
-        this.state = {
+
+        state = {
             results: []
         }
-    }
+    
 
     // 
-    // componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
 
-    //     if (this.state.queryTerm !== "" && (prevState.queryTerm !== this.state.queryTerm || prevState.startYear !== this.state.startYear || prevState.endYear !== this.state.endYear)) {
-    //         API.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear)
-    //         .then(function(data) {
-    //             if (data !== this.state.results) {
-    //                 this.setState({
-    //                     results: data
-    //                 })
-    //             }
-    //         }.bind(this))
-    //     }
-    // }
+        if (this.state.queryTerm !== "" && (prevState.queryTerm !== this.state.queryTerm || prevState.startYear !== this.state.startYear || prevState.endYear !== this.state.endYear)) {
+            API.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear)
+            .then(function(data) {
+                if (data !== this.state.results) {
+                    this.setState({
+                        results: data
+                    })
+                }
+            })
+        }
+    }
 // function that passes down into child components to change parent
     setQuery = (newQuery, newStart, newEnd) => {
         API.runQuery(newQuery, newStart, newEnd)
@@ -44,12 +43,13 @@ export default class Search extends Component {
     render() {
         return(
             <div className="main-container">
+                <div className="container">
 
-                {/* enables query to perform search */}
-                <Query updateSearch={this.setQuery} />
-                {/* pass result into the component */}
-                <Results results={this.state.results} />
-
+                    {/* enables query to perform search */}
+                    <Query updateSearch={this.setQuery} />
+                    {/* pass result into the component */}
+                    <Results results={this.state.results} />
+                </div>
             </div>
         )
     }

@@ -7,14 +7,12 @@ import API from '../../utils/API';
 // results component declaration
 export default class Results extends Component {
     // set initial state
-    constructor() {
-        super();
-        this.state = {
+        state = {
             title: "",
             url: "",
             date: "",
         }
-    }
+    
 
     // handle sending of search terms to parent search component
     handleClick = (item) => {

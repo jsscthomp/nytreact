@@ -4,14 +4,12 @@ import React, { Component } from 'react';
 // query component declaration
 export default class Query extends Component {
 // set initial variables
-    constructor() {
-        super();
-        this.state = {
+
+        state = {
             search: "tennis",
             start: "2010",
             end: "2017",
         }
-    }
 
     // handle changes from textbox
     handleChange(event) {

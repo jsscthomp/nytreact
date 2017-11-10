@@ -6,12 +6,10 @@ import API from '../utils/API';
 // create and export main component
 class Saved extends Component {
     // set initial state for this component
-    constructor() {
-        super();
-        this.state =  {
+        state =  {
             savedArticles: []
         }
-    }
+    
 // When this component mounts, get all saved articles from our DB
     componentDidMount() {
         API.getSaved()
