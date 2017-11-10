@@ -10,8 +10,8 @@ const PORT = process.env.PORT || 6000;
 var Article = require('./models/Article.js');
 
 // config body parser for ajax requests
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 
@@ -52,9 +52,9 @@ db.once('open', function () {
 
 // ===================================================================
 // Route to get all saved articles
-app.get('/', function(req, res) {
-    res.sendFile(path.join, '/client/public/index.html');
-});
+// app.get('/', function(req, res) {
+//     res.sendFile(path.join, '/client/public/index.html');
+// });
 
 app.get('/api/saved', function(req, res) {
     Article.find({})
@@ -81,7 +81,7 @@ app.post('/api/saved', function(req, res) {
 });
 
 // route to delet an article from saved list
-app.delete('/api/saved/', function(req, res) {
+app.delete('/api/saved', function(req, res) {
     var url = req.param('url');
     Article.find({ url: url }).remove().exec(function(err, data) {
         if(err) {
