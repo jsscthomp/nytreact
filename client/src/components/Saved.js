@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import API from '../utils/API';
 
 // create and export main component
-export default class Saved extends Component {
+class Saved extends Component {
     // set initial state for this component
     constructor() {
         super();
@@ -32,7 +32,7 @@ export default class Saved extends Component {
             
             // get updated list
             API.getSaved()
-                .then(() => {
+                .then((articleDatas) => {
                     this.setState({
                         savedArticles: articleData.data
                     });
@@ -114,3 +114,5 @@ export default class Saved extends Component {
         return this.renderContainer();
     }
 };
+
+export default Saved;

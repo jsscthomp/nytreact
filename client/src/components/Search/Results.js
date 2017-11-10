@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import API from '../../utils/API';
 
 // results component declaration
-export class Results extends Component {
+export default class Results extends Component {
     // set initial state
     constructor() {
         super();

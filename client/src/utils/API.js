@@ -43,7 +43,7 @@ const API = {
     // post saved articles to db
     postSaved: function(title, date, url) {
         var newArticle = {title: title, date: date, url: url};
-        console.log('post saved', title);
+        console.log('post saved: ', title);
         return axios.post('/api/saved', newArticle)
             .then(function(response) {
                 console.log("axios results", response.data._id);

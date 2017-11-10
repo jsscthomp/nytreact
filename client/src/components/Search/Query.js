@@ -2,14 +2,14 @@
 import React, { Component } from 'react';
 
 // query component declaration
-export class Query extends Component {
+export default class Query extends Component {
 // set initial variables
     constructor() {
         super();
         this.state = {
-            search: "",
-            start: "",
-            end: "",
+            search: "tennis",
+            start: "2010",
+            end: "2017",
         }
     }
 
@@ -35,7 +35,6 @@ export class Query extends Component {
                     <div className="col-lg-12">
 
                         <div className="panel panel-primary">
-
                             <div className="panel-heading">
                                 <h2 className="panel-title"><i className="fa fa-newspaper-o" aria-hidden="true"></i>Search</h2>
                             </div>
@@ -43,10 +42,10 @@ export class Query extends Component {
                             <div className="panel-body">
 
                                 {/* associate text-box input with state values */}
-                                <form>
+                                <form onSubmit={this.handleSubmit}>
 
                                     <div className="form-group">
-                                        <h3 className="topic">Topic</h3>
+                                        <h3 className="topic"><strong>Topic</strong></h3>
                                         <input 
                                             type="text" 
                                             value={this.state.value} 
@@ -56,18 +55,20 @@ export class Query extends Component {
                                             required 
                                             />
 
-                                        <h3 className="start">Start Year (Required)</h3>
+                                        <h3 className="start"><strong>Start Year (Required)</strong></h3>
                                         <input 
-                                            value= {this.state.value} 
+                                            type="number"
+                                            value= {this.state.start} 
                                             className="form-control" 
                                             id="start" 
                                             onChange= {this.handleChange} 
                                             required 
                                             />
 
-                                        <h3 className="end">End Year (Required)</h3>
+                                        <h3 className="end"><strong>End Year (Required)</strong></h3>
                                         <input 
-                                            value={this.state.value} 
+                                            type="number"
+                                            value={this.state.end} 
                                             className="form-control" 
                                             id="end" 
                                             onChange={this.handleChange} 
@@ -77,9 +78,9 @@ export class Query extends Component {
                                     {/* create onclick event that triggers handleSubmit method */}
                                     <div className="pull-right">
                                         <button 
-                                            type="button" 
+                                            type="submit" 
                                             className="btn btn-secondary" 
-                                            onClick={this.handleSubmit}
+                                            /* onClick={this.handleSubmit} */
                                             >
                                             <h4>Submit</h4>
                                         </button>

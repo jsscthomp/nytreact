@@ -14,26 +14,26 @@ export default class Search extends Component {
     constructor() {
         super();
         this.state = {
-            results: {}
+            results: []
         }
     }
 
     // 
-    componentDidUpdate(prevProps, prevState) {
+    // componentDidUpdate(prevProps, prevState) {
 
-        if (this.state.queryTerm !== "" && (prevState.queryTerm !== this.state.queryTerm || prevState.startYear !== this.state.startYear || prevState.endYear !== this.state.endYear)) {
-            API.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear)
-            .then(function(data) {
-                if (data !== this.state.results) {
-                    this.setState({
-                        results: data
-                    })
-                }
-            }.bind(this))
-        }
-    }
+    //     if (this.state.queryTerm !== "" && (prevState.queryTerm !== this.state.queryTerm || prevState.startYear !== this.state.startYear || prevState.endYear !== this.state.endYear)) {
+    //         API.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear)
+    //         .then(function(data) {
+    //             if (data !== this.state.results) {
+    //                 this.setState({
+    //                     results: data
+    //                 })
+    //             }
+    //         }.bind(this))
+    //     }
+    // }
 // function that passes down into child components to change parent
-    setQuery(newQuery, newStart, newEnd) {
+    setQuery = (newQuery, newStart, newEnd) => {
         API.runQuery(newQuery, newStart, newEnd)
         .then((data) => {
             this.setState({ results: { docs: data.docs} });
